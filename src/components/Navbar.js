@@ -1,10 +1,12 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function Navbar(props){
     const profile=(
-        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/profile">Profile</Link></li>
     )
-    return(
+    const isAuthenticated=useSelector((state) => state.user.isAuthenticated);
+    const element= isAuthenticated?(
         <>
             <div className="nav--bar">
                 <ul className="nav--item">
@@ -16,7 +18,12 @@ export default function Navbar(props){
                     {profile}
                 </ul>
             </div>
-            <Outlet/>
         </>
+    ):<></>
+    return (
+       <div>
+            {element}
+            <Outlet/>
+       </div>
     )
 }
