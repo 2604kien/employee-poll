@@ -4,12 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../slices/userSlice";
 export default function Navbar(props){
     const dispatch=useDispatch();
+    const userName=useSelector(state=>state.user.entities.name)
     const handleLogout=()=>{
         dispatch(logout());
     }
     const profile=(
         <>
-        <li ><Link to='/profile'>Profile</Link></li>
+        <li >{userName}</li>
         <li onClick={handleLogout}><Link to="/logout">Logout</Link></li>
         </>
     )

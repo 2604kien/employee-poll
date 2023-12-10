@@ -27,7 +27,7 @@ const userSlice=createSlice({
                 if(arrayObject[i]["id"]===action.payload.username && arrayObject[i]["password"]===action.payload.password){
                     state.entities={...arrayObject[i]};
                     state.isAuthenticated=true;
-                    console.log(JSON.stringify(state));
+                    console.log(JSON.stringify(state.entities));
                     break;
                 }
             }

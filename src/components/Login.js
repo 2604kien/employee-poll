@@ -42,7 +42,7 @@ export default function Login(){
                 {loginFailed && <p style={{color: "red"}}>*Username or password not match!!!</p>}
                 <input onChange={handleChange} type="text" name="username" value={formData.username} placeholder="Enter your account." required/>
                 <input onChange={handleChange} type="text" name="password" value={formData.password} placeholder="Enter your password." required/>
-                <input style={{width: "120px"}}type="submit" value="Login"/>
+                <input style={{width: "120px", cursor: "pointer"}}type="submit" value="Login"/>
             </form>
         </div>
     )
