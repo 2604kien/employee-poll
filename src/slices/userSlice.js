@@ -25,11 +25,14 @@ const userSlice=createSlice({
             const arrayObject=Object.values(state.entities) //because state is associated object so we convert it to array of values
             for(let i=0; i< arrayObject.length; i++){
                 if(arrayObject[i]["id"]===action.payload.username && arrayObject[i]["password"]===action.payload.password){
+                    state.entities={...arrayObject[i]};
                     state.isAuthenticated=true;
                     break;
                 }
             }
-            console.log(JSON.stringify(state))
+        },
+        logout:(state, action)=>{
+            state.isAuthenticated=false;
         }
     },
     extraReducers(builder){
@@ -45,5 +48,5 @@ const userSlice=createSlice({
           });
     }
 })
-export const {verifyLogin}=userSlice.actions;
+export const {verifyLogin, logout}=userSlice.actions;
 export default userSlice.reducer;
