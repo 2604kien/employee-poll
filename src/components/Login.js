@@ -5,14 +5,18 @@ import { verifyLogin, fetchUsers } from "../slices/userSlice";
 import { useNavigate } from "react-router-dom";
 export default function Login(){
     const [loginFailed, setLoginFailed]=React.useState(false);
-    const isAuthenticated=useSelector((state) => state.user.isAuthenticated);
+    const isAuthenticated=useSelector((state)=>state.user.isAuthenticated);
     const navigate=useNavigate();
     const dispatch=useDispatch();
     const [formData, setFormData]=React.useState({
         username: "",
         password: "",
     })
-
+    React.useEffect(() => { //navigate to Home after login
+        if (isAuthenticated) {
+            navigate("/");
+        }
+    }, [isAuthenticated]); 
     const handleChange=(e)=>{
         e.preventDefault()
         const {name, value}=e.target;
@@ -23,16 +27,12 @@ export default function Login(){
             });
         })
     }
-    const submitLogin=(e)=>{
-
+    const submitLogin= (e)=>{
         e.preventDefault();
         dispatch(fetchUsers())
             .then(()=>{
                 dispatch(verifyLogin(formData));
-                if(isAuthenticated) {
-                    navigate("/")
-                }
-                else setLoginFailed(true);
+               if(isAuthenticated===false) setLoginFailed(true);
             })
     }
     return (

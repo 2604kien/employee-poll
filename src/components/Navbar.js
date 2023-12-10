@@ -8,7 +8,10 @@ export default function Navbar(props){
         dispatch(logout());
     }
     const profile=(
+        <>
+        <li ><Link to='/profile'>Profile</Link></li>
         <li onClick={handleLogout}><Link to="/logout">Logout</Link></li>
+        </>
     )
     const isAuthenticated=useSelector((state) => state.user.isAuthenticated);
     const element= isAuthenticated?(
