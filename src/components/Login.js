@@ -33,17 +33,14 @@ export default function Login(){
                     navigate("/")
                 }
             })
-        
-       
-        console.log(formData);
     }
     return (
         <div>
             <img src={loginIMG} />
-            <form className="login--form">
-                <input onChange={handleChange} type="text" name="username" value={formData.username} placeholder="Enter your account."/>
-                <input onChange={handleChange} type="text" name="password" value={formData.password} placeholder="Enter your password."/>
-                <button onClick={submitLogin}>Login</button>
+            <form onSubmit={submitLogin} className="login--form">
+                <input onChange={handleChange} type="text" name="username" value={formData.username} placeholder="Enter your account." required/>
+                <input onChange={handleChange} type="text" name="password" value={formData.password} placeholder="Enter your password." required/>
+                <input style={{width: "120px"}}type="submit" value="Login"/>
             </form>
         </div>
     )
