@@ -10,12 +10,10 @@ const initialState = userAdapter.getInitialState({
 export const fetchUsers= createAsyncThunk('users/fetchUsers', async ()=>{
     try{
         const response = await _getUsers();
-        console.log(response);
         return response;
         
     }
     catch(error){
-        console.log(error);
     }
 })
 
@@ -24,7 +22,7 @@ const userSlice=createSlice({
     initialState: initialState,
     reducers:{
         verifyLogin:(state, action)=>{
-            const arrayObject=Object.values(state.entities)
+            const arrayObject=Object.values(state.entities) //because state is associated object so we convert it to array of values
             for(let i=0; i< arrayObject.length; i++){
                 if(arrayObject[i]["id"]===action.payload.username && arrayObject[i]["password"]===action.payload.password){
                     state.isAuthenticated=true;
