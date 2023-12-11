@@ -1,13 +1,18 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
-import { _getQuestions } from "../_DATA";
+import { _getQuestions, _saveQuestionAnswer } from "../_DATA";
 const questionAdapter=createEntityAdapter({});
 const initialState=questionAdapter.getInitialState({
     status: "idle",
 });
 export const fetchQuestions=createAsyncThunk("question/featchQuestions",async()=>{
-    const response=_getQuestions();
-    console.log(JSON.stringify(response));
+    const response= await _getQuestions();
     return response;
+})
+export const saveQuestionAnswer=createAsyncThunk("question/saveQuestionAnswer",async({authedUser, qid, answer})=>{
+    console.log(authedUser, qid, answer);
+    await _saveQuestionAnswer({authedUser, qid, answer})
+    
+    return {authedUser, qid, answer}
 })
 const questionSlice= createSlice({
     name: "question",
