@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Question from "./Question";
 import NewQuestions from "./NewQuestions";
+import Add from "./Add";
 function App() {
   const navigate=useNavigate();
   const isAuthenticated=useSelector((state)=>state.user.isAuthenticated);
@@ -27,6 +28,7 @@ function App() {
             <Route path="" element={<NewQuestions/>}/>
             <Route path="login" element={<Login/>}/>
             <Route path="question/:question_id" element={<Question/>}/>
+            <Route path="add" element={<Add/>}/>
           </Route>
         </Routes>
       </div>
