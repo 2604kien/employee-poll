@@ -9,7 +9,7 @@ export const fetchQuestions=createAsyncThunk("question/featchQuestions",async()=
     return response;
 })
 export const saveQuestionAnswer=createAsyncThunk("question/saveQuestionAnswer",async({authedUser, qid, answer})=>{
-    console.log(authedUser, qid, answer);
+    
     await _saveQuestionAnswer({authedUser, qid, answer})
     
     return {authedUser, qid, answer}
@@ -23,10 +23,20 @@ const questionSlice= createSlice({
     initialState: initialState,
     reducer:{},
     extraReducers:(builder)=>{
-        builder.addCase(fetchQuestions.fulfilled, (state, action)=>{
-            state.status="succeeded"
+        builder.addCase(fetchQuestions.pending, (state, action)=>{
+            state.status="loading";
+        })
+        .addCase(fetchQuestions.fulfilled, (state, action)=>{
+            state.status="succeeded";
             state.entities=action.payload;
+        })
+        .addCase(addQuestion.pending, (state, action)=>{
+            state.status="loading"
+        })
+        .addCase(addQuestion.fulfilled, (state, action)=>{
+            state.status="succeeded"
         })
     }
 })
 export default questionSlice.reducer;
+export const getPostStatus=state=>state.question.status;
