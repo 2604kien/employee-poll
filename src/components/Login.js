@@ -3,6 +3,7 @@ import loginIMG from "../images/Screenshot 2023-12-10 102324.png";
 import { useSelector, useDispatch } from "react-redux";
 import { verifyLogin, fetchUsers } from "../slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 export default function Login(){
     const [loginFailed, setLoginFailed]=React.useState(false);
     const isAuthenticated=useSelector((state)=>state.user.isAuthenticated);

@@ -28,7 +28,6 @@ export default function Question(){
             qid: questionData.id,
             answer: value
         }
-        console.log(data);
         dispatch(saveQuestionAnswer(data))
         .then(()=>{
             dispatch(fetchUsers()).then(()=>{

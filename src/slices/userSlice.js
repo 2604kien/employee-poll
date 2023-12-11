@@ -60,4 +60,5 @@ const userSlice=createSlice({
     }
 })
 export const {verifyLogin, logout, getCurrentUser}=userSlice.actions;
+export const getUserStatus=(state)=> state.user.status;
 export default userSlice.reducer;
