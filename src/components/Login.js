@@ -16,7 +16,7 @@ export default function Login(){
         if (isAuthenticated) {
             navigate("/");
         }
-    }, [isAuthenticated]); 
+    }, [isAuthenticated, navigate]); 
     const handleChange=(e)=>{
         e.preventDefault()
         const {name, value}=e.target;
@@ -37,7 +37,7 @@ export default function Login(){
     }
     return (
         <div>
-            <img src={loginIMG} />
+            <img  atl="" src={loginIMG} />
             <form onSubmit={submitLogin} className="login--form">
                 {loginFailed && <p style={{color: "red"}}>*Username or password not match!!!</p>}
                 <input onChange={handleChange} type="text" name="username" value={formData.username} placeholder="Enter your account." required/>
