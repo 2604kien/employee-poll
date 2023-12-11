@@ -4,6 +4,7 @@ const userAdapter=createEntityAdapter({});
 const initialState = userAdapter.getInitialState({
     status: 'idle', // or 'loading', 'succeeded', 'failed' depending on your use case
     isAuthenticated: false,
+    currentUser:{},
   });
 
 //fetch user data
@@ -25,9 +26,8 @@ const userSlice=createSlice({
             const arrayObject=Object.values(state.entities) //because state is associated object so we convert it to array of values
             for(let i=0; i< arrayObject.length; i++){
                 if(arrayObject[i]["id"]===action.payload.username && arrayObject[i]["password"]===action.payload.password){
-                    state.entities={...arrayObject[i]};
+                    state.currentUser={...arrayObject[i]};
                     state.isAuthenticated=true;
-                    console.log(JSON.stringify(state.entities));
                     break;
                 }
             }

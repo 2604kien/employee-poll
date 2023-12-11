@@ -1,13 +1,15 @@
 import React from "react";
 import moment from "moment";
+import { Link } from "react-router-dom";
 export default function QuestionCard(props){
     const formattedDate = moment(props.data.timestamp).format('h:mm A | MM/DD/YYYY');
+    const question_id=props.data.id;
     return(
         <div className="question--card">
-            <h3>{props.data.author}</h3>
-            <h3>{formattedDate}</h3>
+            <h2>{props.data.author}</h2>
+            <h3 style={{opacity:"0.6"}}>{formattedDate}</h3>
             <hr/>
-            <button>Show</button>
+            <Link style={{color: "black", textDecoration:"none"}} to={`/question/${question_id}`}><button className="show--button"> Show</button></Link>
         </div>
     )
 }

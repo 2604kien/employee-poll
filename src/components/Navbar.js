@@ -4,13 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../slices/userSlice";
 export default function Navbar(props){
     const dispatch=useDispatch();
-    const userName=useSelector(state=>state.user.entities.name)
+    const userName=useSelector(state=>state.user.currentUser.name);
+    const avatar=useSelector(state=> state.user.currentUser.avatarURL);
     const handleLogout=()=>{
         dispatch(logout());
     }
     const profile=(
         <>
-        <li >{userName}</li>
+        <img style={{width:"50px"}} src={avatar}/>
+        <li >{userName}.</li>
         <li onClick={handleLogout}><Link to="/logout">Logout</Link></li>
         </>
     )

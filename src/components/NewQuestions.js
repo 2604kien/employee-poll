@@ -5,19 +5,19 @@ import QuestionCard from "./QuestionCard";
 export default function NewQuestions(){
     const dispatch=useDispatch();
     const questionData=Object.values(useSelector(state=>state.question.entities)); //get user data to 
-    const currentUserData=useSelector(state=>state.user.entities);
+    const currentUserData=useSelector(state=>state.user.currentUser);
     React.useEffect(()=>{
         dispatch(fetchQuestions());
     },[dispatch]);
-    const newElement=questionData.map(el=>{
-        if(currentUserData.answers[el.id]) return (<QuestionCard key={el.id} data={el}></QuestionCard>)
+    const doneElement=questionData.map(el=>{
+        if(currentUserData.answers[el.id]) return (<QuestionCard key={el.id} data={el}></QuestionCard>);
+        else return ;
 
     })
-    const doneElement=questionData.map(el=>{
+    const newElement=questionData.map(el=>{
         if(!currentUserData.answers[el.id]) return (<QuestionCard key={el.id} data={el}></QuestionCard>)
+        else return ;
     })
-    console.log(questionData);
-    console.log(currentUserData);
     return(
         <div style={{ marginTop: "50px", width:"100%", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
             <div className="new--question">

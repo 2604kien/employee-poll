@@ -4,6 +4,7 @@ import Login from "./Login";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import Question from "./Question";
 import NewQuestions from "./NewQuestions";
 function App() {
   const navigate=useNavigate();
@@ -25,6 +26,7 @@ function App() {
           <Route path="/*" element={<Navbar/>}>
             <Route path="" element={<NewQuestions/>}/>
             <Route path="login" element={<Login/>}/>
+            <Route path="question/:question_id" element={<Question/>}/>
           </Route>
         </Routes>
       </div>
