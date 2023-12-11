@@ -23,7 +23,7 @@ export default function Navbar(props){
                 <ul className="nav--item">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/leaderboard">Leaderboard</Link></li>
-                    <li><Link to="/news">News</Link></li>
+                    <li><Link to="/add">News</Link></li>
                 </ul>
                 <ul className="nav--profile">
                     {profile}
