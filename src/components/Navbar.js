@@ -11,7 +11,7 @@ export default function Navbar(props){
     }
     const profile=(
         <>
-        <img style={{width:"50px"}} src={avatar}/>
+        <img style={{width:"50px", borderRadius:"50%"}} src={avatar}/>
         <li >{userName}.</li>
         <li onClick={handleLogout}><Link to="/logout">Logout</Link></li>
         </>
@@ -23,7 +23,7 @@ export default function Navbar(props){
                 <ul className="nav--item">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/leaderboard">Leaderboard</Link></li>
-                    <li><Link to="/add">News</Link></li>
+                    <li><Link to="/add">Add Question</Link></li>
                 </ul>
                 <ul className="nav--profile">
                     {profile}
