@@ -33,6 +33,15 @@ const userSlice=createSlice({
             }
             
         },
+        getCurrentUser:(state, action)=>{
+            const arrayObject=Object.values(state.entities)
+            for(let i=0; i< arrayObject.length; i++){
+            if(arrayObject[i]["id"]===action.payload){
+                state.currentUser={...arrayObject[i]};
+                break;
+            }
+        }
+        },
         logout:(state, action)=>{
             state.isAuthenticated=false;
         }
@@ -50,5 +59,5 @@ const userSlice=createSlice({
           });
     }
 })
-export const {verifyLogin, logout}=userSlice.actions;
+export const {verifyLogin, logout, getCurrentUser}=userSlice.actions;
 export default userSlice.reducer;
