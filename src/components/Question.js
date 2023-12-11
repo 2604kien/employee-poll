@@ -41,7 +41,7 @@ export default function Question(){
         <div>
             <h1>Poll by {authorName}</h1>
 
-            <img style={{border: "1px solid black", borderRadius:"10%"}} src={authorAvatar}/>
+            <img style={{border: "10px solid black", borderRadius:"50%"}} src={authorAvatar}/>
 
             <h1>Would you rather:</h1>
             <div style={{
