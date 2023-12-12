@@ -28,6 +28,7 @@ export default function Question(){
             qid: questionData.id,
             answer: value
         }
+        if(!isAnswered){
         dispatch(saveQuestionAnswer(data))
         .then(()=>{
             dispatch(fetchUsers()).then(()=>{
@@ -35,6 +36,8 @@ export default function Question(){
             })
            
         });
+        }
+        else alert("You already answered this question.")
     }
     return (
         <div>
@@ -56,7 +59,7 @@ export default function Question(){
                     <button onClick={handleClick}
                         value="optionOne"
                         style={{
-                            cursor: "pointer",
+                            cursor: isAnswered ?"default":"pointer",
                             backgroundColor:optionForThisQuestion==="optionOne"?"red":"green",
                             color: "white",
                             height:"50px", display: "flex",                
@@ -72,7 +75,7 @@ export default function Question(){
                 <button type="button" onClick={handleClick}
                     value="optionTwo"
                     style={{
-                        cursor: "pointer",
+                        cursor: isAnswered ?"default":"pointer",
                         backgroundColor:optionForThisQuestion==="optionTwo"?"red":"green",
                         color: "white",
                         height:"50px", display: "flex",                
