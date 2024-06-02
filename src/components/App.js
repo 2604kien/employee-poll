@@ -38,7 +38,6 @@ function App() {
       <>
       {isLoading && <Loading />}
       <div className="App">
-
           <Routes>
             <Route path="/*" element={<Navbar/>}>
               <Route path="" element={<NewQuestions/>}/>

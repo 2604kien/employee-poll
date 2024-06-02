@@ -29,6 +29,7 @@ body {
     display: flex;
     flex-direction: row;
     border-bottom: 3px solid rgba(150, 148, 148, 0.5);
+    top:0;
 }
 .nav--bar >ul{
     list-style: none;
